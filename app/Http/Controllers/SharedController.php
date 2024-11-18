@@ -12,11 +12,11 @@ class SharedController extends Controller
 {
     public function changeLanguage(Request $request): JsonResponse
     {
-        $direction = 'ltr';
+        $direction = 'rtl';
         $language = getWebConfig('language');
         foreach ($language as $data) {
             if ($data['code'] == $request['language_code']) {
-                $direction = $data['direction'] ?? 'ltr';
+                $direction = $data['direction'] ?? 'rtl';
             }
         }
         session()->forget('language_settings');

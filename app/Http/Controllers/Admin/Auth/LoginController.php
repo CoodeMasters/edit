@@ -33,7 +33,7 @@ class LoginController extends BaseController
         return $this->getLoginView(loginUrl: $type);
     }
 
-    public function generateReCaptcha()
+/*     public function generateReCaptcha()
     {
         $recaptchaBuilder = $this->generateDefaultReCaptcha(4);
         if (Session::has(SessionKey::ADMIN_RECAPTCHA_KEY)) {
@@ -43,7 +43,7 @@ class LoginController extends BaseController
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");
         $recaptchaBuilder->output();
-    }
+    } */
 
     private function getLoginView(string $loginUrl): View
     {
@@ -65,7 +65,7 @@ class LoginController extends BaseController
 
     public function login(LoginRequest $request): RedirectResponse
     {
-        $recaptcha = getWebConfig(name: 'recaptcha');
+/*         $recaptcha = getWebConfig(name: 'recaptcha');
         if (isset($recaptcha) && $recaptcha['status'] == 1) {
             $request->validate([
                 'g-recaptcha-response' => [
@@ -84,7 +84,7 @@ class LoginController extends BaseController
         } else if(strtolower(session(SessionKey::ADMIN_RECAPTCHA_KEY)) != strtolower($request['default_captcha_value'])) {
             Toastr::error(translate('ReCAPTCHA_Failed'));
             return back();
-        }
+        } */
 
         $admin = $this->admin->where('email', $request['email'])->first();
 

@@ -91,7 +91,7 @@
                             </label>
                         </div>
                     </div>
-                    @if(isset($recaptcha) && $recaptcha['status'] == 1)
+{{--                     @if(isset($recaptcha) && $recaptcha['status'] == 1)
                         <div id="recaptcha_element" class="w-100;" data-type="image"></div>
                         <br/>
                     @else
@@ -114,7 +114,7 @@
                                 </a>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <button type="submit" class="btn btn-lg btn-block btn--primary">
                         {{ translate('sign_in')}}
