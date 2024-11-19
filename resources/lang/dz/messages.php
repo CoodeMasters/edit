@@ -435,7 +435,7 @@ return [
 	"register_control_your_order" => "Register control your order",
 	"first_name" => "الاسم الأول",
 	"last_name" => "اسم العائلة",
-	"phone_name" => "phone name",
+	"phone_name" => "اسم الهاتف ",
 	"confirm_password" => "تأكيد كلمة المرور",
 	"i_agree_to_Your_terms" => "i agree to Your terms",
 	"sing_up_with_google" => "Sing up with google",
@@ -449,6 +449,7 @@ return [
 	"REVIEWS" => "التعليقات",
 	"Overall" => "إجمالي",
 	"rating" => "تصنيف",
+
 	"0" => "0",
 	"1" => "1",
 	"2" => "2",
