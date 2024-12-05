@@ -367,7 +367,7 @@ class OrderController extends BaseController
             $deliverymanWallet = $this->deliveryManWalletRepo->getFirstWhere(params: ['delivery_man_id' => $order['delivery_man_id']]);
             $cashInHand = $order['payment_method'] == 'cash_on_delivery' ? $order['order_amount'] : 0;
 
-            if (empty($deliverymanWallet)) {
+/*             if (empty($deliverymanWallet)) {
                 $deliverymanWalletData = $deliveryManWalletService->getDeliveryManData(id: $order['delivery_man_id'], deliverymanCharge: $order['deliveryman_charge'], cashInHand: $cashInHand);
                 $this->deliveryManWalletRepo->add(data: $deliverymanWalletData);
             } else {
@@ -380,7 +380,7 @@ class OrderController extends BaseController
             if ($order['deliveryman_charge'] && $request['order_status'] == 'delivered') {
                 $deliveryManTransactionData = $deliveryManTransactionService->getDeliveryManTransactionData(amount: $order['deliveryman_charge'], addedBy: 'admin', id: $order['delivery_man_id'], transactionType: 'deliveryman_charge');
                 $this->deliveryManTransactionRepo->add($deliveryManTransactionData);
-            }
+            } */
         }
 
         $orderStatusHistoryData = $orderStatusHistoryService->getOrderHistoryData(orderId: $request['id'], userId: 0, userType: 'admin', status: $request['order_status']);

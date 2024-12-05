@@ -8889,4 +8889,6 @@ return [
 	"Finally,_click_‘Update’_to_save_the_changes" => "Finally  click ‘Update’ to save the changes",
 	"are_you_sure,_want_to_start_auto_translation" => "Are you sure  want to start auto translation",
 	"if_you_encounter_any_issues_during_the_translation_process,_please_contact_your_administrator." => "If you encounter any issues during the translation process  please contact your administrator.",
+	"street_1,_street_2,_street_3,_street_4" => "Street 1  street 2  street 3  street 4",
+	"company delivery" => "Company delivery",
 ];

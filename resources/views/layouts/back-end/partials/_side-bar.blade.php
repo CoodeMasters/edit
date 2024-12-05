@@ -153,7 +153,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/processing')?'active':''}}">
+{{--                                     <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/processing')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['processing'])}}"
                                            title="{{translate('packaging')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -164,7 +164,7 @@
                                                 </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/out_for_delivery')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['out_for_delivery'])}}"
                                            title="{{translate('out_for_delivery')}}">
@@ -201,7 +201,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/failed')?'active':''}}">
+{{--                                     <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/failed')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['failed'])}}"
                                            title="{{translate('failed')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -212,7 +212,7 @@
                                                 </span>
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="nav-item {{Request::is('admin/orders/'.Order::LIST[URI].'/canceled')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['canceled'])}}"

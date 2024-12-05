@@ -74,15 +74,8 @@
                                         @if($order['order_status']=='pending')
                                             <span
                                                 class="badge color-caribbean-green-soft font-weight-bold radius-50 d-flex align-items-center py-1 px-2">{{translate(str_replace('_',' ',$order['order_status']))}}</span>
-                                        @elseif($order['order_status']=='failed')
-                                            <span
-                                                class="badge badge-soft-danger font-weight-bold radius-50 d-flex align-items-center py-1 px-2">{{translate(str_replace('_',' ',$order['order_status'] == 'failed' ? 'Failed to Deliver' : ''))}}
-                                            </span>
-                                        @elseif($order['order_status']=='processing' || $order['order_status']=='out_for_delivery')
-                                            <span
-                                                class="badge badge-soft-warning font-weight-bold radius-50 d-flex align-items-center py-1 px-2">
-                                                {{translate(str_replace('_',' ',$order['order_status'] == 'processing' ? 'Packaging' : $order['order_status']))}}
-                                            </span>
+
+
                                         @elseif($order['order_status']=='delivered' || $order['order_status']=='confirmed')
                                             <span
                                                 class="badge badge-soft-success font-weight-bold radius-50 d-flex align-items-center py-1 px-2">
@@ -398,18 +391,16 @@
                                     value="pending" {{$order->order_status == 'pending'?'selected':''}} > {{translate('pending')}}</option>
                                 <option
                                     value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{translate('confirmed')}}</option>
-                                <option
-                                    value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{translate('packaging')}} </option>
+
                                 <option class="text-capitalize"
                                         value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{translate('out_for_delivery')}} </option>
-                                <option
+{{--                                 <option
                                     value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{translate('delivered')}} </option>
                                 <option
                                     value="returned" {{$order->order_status == 'returned'?'selected':''}} > {{translate('returned')}}</option>
+
                                 <option
-                                    value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{translate('failed_to_Deliver')}} </option>
-                                <option
-                                    value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{translate('canceled')}} </option>
+                                    value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{translate('canceled')}} </option> --}}
                             </select>
                         </div>
                         <div
@@ -444,17 +435,17 @@
                                     @endif
                                     <select class="form-control text-capitalize" name="delivery_type"
                                             id="choose_delivery_type">
-                                        <option value="0">
+{{--                                         <option value="0">
                                             {{translate('choose_delivery_type')}}
-                                        </option>
+                                        </option> --}}
                                         <option
                                             value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
                                             {{translate('by_self_delivery_man')}}
                                         </option>
-                                        <option
+{{--                                         <option
                                             value="third_party_delivery" {{$order->delivery_type=='third_party_delivery'?'selected':''}} >
                                             {{translate('by_third_party_delivery_service')}}
-                                        </option>
+                                        </option> --}}
                                     </select>
                                 </li>
 
@@ -501,7 +492,7 @@
                                     @endif
                                 </li>
                                 @if (isset($order->deliveryMan))
-                                    <li class="choose_delivery_man">
+{{--                                     <li class="choose_delivery_man">
                                         <label class="font-weight-bold title-color d-flex fz-14">
                                             {{translate('delivery_man_incentive')}} ({{ session('currency_symbol') }})
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -521,7 +512,7 @@
                                             <button
                                                 class="btn btn--primary {{$order['order_status']=='delivered' ? 'disabled deliveryman-charge-alert':'deliveryman-charge'}}">{{translate('update')}}</button>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                     <li class="choose_delivery_man">
                                         <label
                                             class="font-weight-bold title-color fz-14">{{translate('expected_delivery_date')}}</label>
@@ -642,7 +633,7 @@
                 @endif
                 <div class="card">
                     @php($billing=$order['billing_address_data'])
-                    @if($billing)
+                    {{-- @if($billing)
                         <div class="card-body">
                             <div class="d-flex gap-2 align-items-center justify-content-between mb-4">
                                 <h4 class="d-flex gap-2">
@@ -699,7 +690,7 @@
                                 <span>{{translate('no_billing_address_found')}}</span>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
                 <div class="card">
                     <div class="card-body">

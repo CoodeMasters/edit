@@ -2003,7 +2003,7 @@ return [
 	"shop_logo" => "shop logo",
 	"Search Ticket by Subject or status..." => "ابحث عن التذكرة حسب الموضوع أو الحالة...",
 	"packaging" => "التعبئة والتغليف",
-	"Out_For_Delivery" => "Out For Delivery",
+	"Out_For_Delivery" => "خارج للتسليم  ",
 	"Failed_To_Delivery" => "فشل في التسليم",
 	"Seller_Wallet" => "Seller Wallet",
 	"Pending_Withdraw" => "في انتظار السحب",

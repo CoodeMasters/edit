@@ -11,11 +11,8 @@
             <h2 class="h1 mb-0">
                 <img src="{{dynamicAsset(path: 'assets/back-end/img/all-orders.png')}}" class="mb-1 mr-1" alt="">
                 <span class="page-header-title">
-                    @if($status =='processing')
-                        {{translate('packaging')}}
-                    @elseif($status =='failed')
-                        {{translate('failed_to_Deliver')}}
-                    @elseif($status == 'all')
+                   
+                    @if($status == 'all')
                         {{translate('all')}}
                     @else
                         {{translate(str_replace('_',' ',$status))}}
@@ -221,19 +218,17 @@
                                         @if($order->order_status=='pending')
                                             <label
                                                 class="badge badge-soft-primary">{{$order['order_status']}}</label>
-                                        @elseif($order->order_status=='processing' || $order->order_status=='out_for_delivery')
+                                        @elseif( $order->order_status=='out_for_delivery')
                                             <label
-                                                class="badge badge-soft-warning">{{str_replace('_',' ',$order['order_status'] == 'processing' ? 'packaging' : $order['order_status'])}}</label>
+                                                class="badge badge-soft-warning">{{str_replace('_',' ', $order['order_status'])}}</label>
                                         @elseif($order->order_status=='delivered' || $order->order_status=='confirmed')
                                             <label
                                                 class="badge badge-soft-success">{{$order['order_status']}}</label>
                                         @elseif($order->order_status=='returned')
                                             <label
-                                                class="badge badge-soft-danger">{{$order['order_status']}}</label>
-                                        @elseif($order['order_status']=='failed')
-                                            <span class="badge badge-danger fz-12">
-                                                    {{translate('failed_to_deliver')}}
-                                            </span>
+                                                class="badge badge-soft-danger">{{$order['order_status']}}
+                                            </label>
+
                                         @else
                                             <label
                                                 class="badge badge-soft-danger">{{$order['order_status']}}</label>

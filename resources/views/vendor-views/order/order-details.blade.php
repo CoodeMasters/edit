@@ -359,8 +359,7 @@
                                     value="pending" {{$order->order_status == 'pending'?'selected':''}} > {{translate('pending')}}</option>
                                 <option
                                     value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{translate('confirmed')}}</option>
-                                <option
-                                    value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{translate('packaging')}} </option>
+                                
 
                                 @php($shippingMethod = getWebConfig(name: 'shipping_method'))
                                 @if($shippingMethod == 'sellerwise_shipping')
@@ -370,8 +369,7 @@
                                         value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{translate('delivered')}} </option>
                                     <option
                                         value="returned" {{$order->order_status == 'returned'?'selected':''}} > {{translate('returned')}}</option>
-                                    <option
-                                        value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{translate('failed_to_deliver')}} </option>
+                                   
                                     <option
                                         value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{translate('canceled')}} </option>
                                 @endif
@@ -599,7 +597,7 @@
                 @endif
                 <div class="card">
                     @php($billing=$order['billing_address_data'])
-                    @if($billing)
+{{--                     @if($billing)
                         <div class="card-body">
                             <div class="d-flex gap-2 align-items-center justify-content-between mb-4">
                                 <h4 class="d-flex gap-2">
@@ -653,7 +651,7 @@
                                 <span>{{translate('no_billing_address_found')}}</span>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
                 <div class="card">
                     <div class="card-body">
