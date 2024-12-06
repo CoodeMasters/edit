@@ -423,7 +423,8 @@
                                 </label>
                             </div>
                         </div>
-                        @if($physicalProduct)
+                        
+                       
                             <ul class="list-unstyled list-unstyled-py-4">
                                 <li>
                                     @if ($order->shipping_type == 'order_wise')
@@ -464,7 +465,7 @@
                                             </option>
                                         @endforeach
                                     </select>
-
+                                     
                                     @if (isset($order->deliveryMan))
                                         <div class="p-2 bg-light rounded mt-4">
                                             <div class="media m-1 gap-3">
@@ -513,14 +514,14 @@
                                                 class="btn btn--primary {{$order['order_status']=='delivered' ? 'disabled deliveryman-charge-alert':'deliveryman-charge'}}">{{translate('update')}}</button>
                                         </div>
                                     </li> --}}
-                                    <li class="choose_delivery_man">
+{{--                                     <li class="choose_delivery_man">
                                         <label
                                             class="font-weight-bold title-color fz-14">{{translate('expected_delivery_date')}}</label>
                                         <input type="date" data-order-id="{{$order['id']}}"
                                                value="{{ $order->expected_delivery_date }}"
                                                name="expected_delivery_date" id="expected_delivery_date"
                                                class="form-control" required>
-                                    </li>
+                                    </li> --}}
                                 @endif
 
                                 <li class="mt-1" id="by_third_party_delivery_service_info">
@@ -538,7 +539,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        @endif
+                        
                     </div>
                 </div>
                 @if(!$order->is_guest && $order->customer)
@@ -570,7 +571,7 @@
                         </div>
                     </div>
                 @endif
-                @if($physicalProduct)
+                
                     <div class="card">
                         @if($shippingAddress)
                             <div class="card-body">
@@ -630,7 +631,7 @@
                             </div>
                         @endif
                     </div>
-                @endif
+              
                 <div class="card">
                     @php($billing=$order['billing_address_data'])
                     {{-- @if($billing)
