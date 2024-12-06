@@ -66,6 +66,7 @@ Route::group(['namespace' => 'RestAPI\v2', 'prefix' => 'v2', 'middleware' => ['a
             Route::controller(OrderController::class)->group(function () {
                 Route::get('list', 'list');
                 Route::get('/{id}', 'details');
+                Route::get('change-status', 'order_change_status');
                 Route::put('order-detail-status/{id}', 'order_detail_status');
                 Route::put('assign-delivery-man', 'assign_delivery_man');
                 Route::put('order-wise-product-upload', 'digital_file_upload_after_sell');

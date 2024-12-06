@@ -46,6 +46,28 @@ class OrderController extends Controller
         return response()->json($orders, 200);
     }
 
+    public function order_change_status (Request $request) {
+        $validator = Validator::make($request->all(), [
+            'order_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::validationErrorProcessor($validator)], 403);
+        }
+        $order = Order::where(['id' => $request->order_id])->first();
+
+        if ($order['payment_method'] == 'cash_on_delivery') {
+            OrderManager::stock_update_on_order_status_change($order, 'delivered');
+            Order::where(['id' => $request->order_id])->update([
+                'order_status' => 'delivered'
+            ]);
+
+            return response()->json(translate('order_delivered_successfully'), 200);
+        }
+
+        return response()->json(['message' => translate('status_not_changeable_now')], 403);
+    }
+
     public function details(Request $request, $id)
     {
         $data = Helpers::get_seller_by_token($request);

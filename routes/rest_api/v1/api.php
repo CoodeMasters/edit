@@ -223,6 +223,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
             Route::group(['prefix' => 'order'], function () {
                 Route::controller(OrderController::class)->group(function () {
                     Route::get('place', 'place_order');
+                    
                     Route::get('offline-payment-method-list', 'offline_payment_method_list');
                     Route::post('place-by-offline-payment', 'placeOrderByOfflinePayment');
                 });
@@ -342,6 +343,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::controller(OrderController::class)->group(function () {
             Route::get('track', 'track_by_order_id');
             Route::get('cancel-order', 'order_cancel');
+            Route::get('change-status', 'order_change_status');
             Route::post('track-order', 'track_order');
         });
     });

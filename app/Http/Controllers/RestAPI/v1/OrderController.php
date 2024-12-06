@@ -48,6 +48,8 @@ class OrderController extends Controller
         return response()->json(OrderManager::track_order($request['order_id']), 200);
     }
 
+
+
     public function order_cancel(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -63,6 +65,30 @@ class OrderController extends Controller
             OrderManager::stock_update_on_order_status_change($order, 'canceled');
             Order::where(['id' => $request->order_id])->update([
                 'order_status' => 'canceled'
+            ]);
+
+            return response()->json(translate('order_canceled_successfully'), 200);
+        }
+
+        return response()->json(['message' => translate('status_not_changeable_now')], 403);
+    }
+
+    public function order_change_status(Request $request) 
+    {
+        $validator = Validator::make($request->all(), [
+            'order_id' => 'required',
+            'status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::validationErrorProcessor($validator)], 403);
+        }
+        $order = Order::where(['id' => $request->order_id])->first();
+
+        if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'delivered') {
+            OrderManager::stock_update_on_order_status_change($order, $request->status);
+            Order::where(['id' => $request->order_id])->update([
+                'order_status' => $request->status
             ]);
 
             return response()->json(translate('order_canceled_successfully'), 200);
@@ -192,7 +218,8 @@ class OrderController extends Controller
     }
 
     public function placeOrderByOfflinePayment(Request $request): JsonResponse
-    {
+    {  
+        //return response()->json(['message' => 'fuck you'], 403);
         $user = Helpers::getCustomerInformation($request);
         $newCustomerRegister = null;
         $cartGroupIds = CartManager::get_cart_group_ids(request: $request, type: 'checked');
