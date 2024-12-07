@@ -589,7 +589,7 @@ class OrderManager
             'is_shipping_free' => $is_shipping_free,
             'shipping_method_id' => $shipping_method_id,
             'shipping_type' => $shipping_type,
-            'deliveryman_charge' => $data['deliveryman_charge'],
+            'deliveryman_charge' => $data['request']->deliveryman_charge,
             'created_at' => now(),
             'updated_at' => now(),
             'order_note' => $order_note
