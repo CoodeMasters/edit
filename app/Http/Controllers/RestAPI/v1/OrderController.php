@@ -86,7 +86,10 @@ class OrderController extends Controller
         $order = Order::where(['id' => $request->order_id])->first();
 
         if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'delivered') {
-            OrderManager::stock_update_on_order_status_change($order, $request->status);
+            if($request->status == 'returned'){
+                OrderManager::stock_update_on_order_status_change($order, $request->status);
+            }
+               
             Order::where(['id' => $request->order_id])->update([
                 'order_status' => $request->status
             ]);
