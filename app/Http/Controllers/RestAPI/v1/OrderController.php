@@ -85,16 +85,25 @@ class OrderController extends Controller
         }
         $order = Order::where(['id' => $request->order_id])->first();
 
+
+
         if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'delivered') {
-            if($request->status == 'returned'){
-                OrderManager::stock_update_on_order_status_change($order, $request->status);
-            }
-               
+
             Order::where(['id' => $request->order_id])->update([
-                'order_status' => $request->status
+                'order_status' => 'completed'
             ]);
 
-            return response()->json(translate('order_canceled_successfully'), 200);
+            return response()->json(translate('order_completed_successfully'), 200);
+           /*  if($request->status == 'returned'){ 
+
+                OrderManager::stock_update_on_order_status_change($order, $request->status);
+            }
+            
+            Order::where(['id' => $request->order_id])->update([
+                'order_status' => $request->status
+            ]); */
+
+            //return response()->json(translate('order_canceled_successfully'), 200);
         }
 
         return response()->json(['message' => translate('status_not_changeable_now')], 403);
