@@ -79,7 +79,7 @@ class OrderController extends Controller
             'order_id' => 'required',
             'status' => 'required'
         ]);
-
+        return response()->json($request, 200);
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::validationErrorProcessor($validator)], 403);
         }
