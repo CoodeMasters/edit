@@ -79,7 +79,7 @@ class OrderController extends Controller
             'order_id' => 'required',
             'status' => 'required'
         ]);
-        return response()->json($request, 200);
+  
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::validationErrorProcessor($validator)], 403);
         }
@@ -90,7 +90,7 @@ class OrderController extends Controller
         if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'delivered') {
 
             Order::where(['id' => $request->order_id])->update([
-                'order_status' => 'completed'
+                'order_status' => $request->status
             ]);
 
             return response()->json(translate('order_completed_successfully'), 200);
