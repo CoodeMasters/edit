@@ -561,6 +561,7 @@ class OrderManager
             'verification_code' => rand(100000, 999999),
             'customer_id' => $getCustomerID,
             'is_guest' => $isGuestUserInOrder,
+            'delivery_type' => 'self_delivery',
             'seller_id' => $seller_data->seller_id,
             'seller_is' => $seller_data->seller_is,
             'customer_type' => 'customer',

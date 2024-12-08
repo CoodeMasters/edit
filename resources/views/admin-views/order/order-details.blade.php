@@ -426,7 +426,7 @@
                         
                        
                             <ul class="list-unstyled list-unstyled-py-4">
-                                <li>
+{{--                                 <li>
                                     @if ($order->shipping_type == 'order_wise')
                                         <label class="font-weight-bold title-color fz-14">
                                             {{translate('shipping_Method')}}
@@ -436,14 +436,19 @@
                                     @endif
                                     <select class="form-control text-capitalize" name="delivery_type"
                                             id="choose_delivery_type">
-
+                                        <option value="0">
+                                            {{translate('choose_delivery_type')}}
+                                        </option> 
                                         <option
-                                            value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
+                                            value="self_delivery" selected>
                                             {{translate('by_self_delivery_man')}}
                                         </option>
-
+                                        <option
+                                            value="third_party_delivery" {{$order->delivery_type=='third_party_delivery'?'selected':''}} >
+                                            {{translate('by_third_party_delivery_service')}}
+                                        </option> 
                                     </select>
-                                </li>
+                                </li> --}}
                                
                                 <li class="choose_delivery_man">
                                     <label class="font-weight-bold title-color fz-14">
