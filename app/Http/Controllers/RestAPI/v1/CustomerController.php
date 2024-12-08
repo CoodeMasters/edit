@@ -365,9 +365,9 @@ class CustomerController extends Controller
     public function get_order_list(Request $request)
     {
         $status = array(
-            'ongoing' => ['out_for_delivery', 'processing', 'confirmed', 'pending'],
+            'ongoing' => ['out_for_delivery', 'processing', 'confirmed', 'pending' , 'delivered'],
             'canceled' => ['canceled', 'failed', 'returned'],
-            'delivered' => ['delivered'],
+            'completed' => ['completed'],
         );
 
         $orders = Order::with('details.product', 'deliveryMan', 'seller.shop')
