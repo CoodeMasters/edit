@@ -500,6 +500,17 @@
                                 </a>
                             </li>
 
+
+
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/section*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{route('admin.section.list')}}" title="{{translate('section_Setup')}}">
+                                   <i class="tio-map  nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('section_Setup')}}</span>
+                                </a>
+                            </li>
+
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/coupon*') || Request::is('admin/deal*')) ?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('offers_&_Deals')}}">

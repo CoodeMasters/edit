@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 use App\Enums\ViewPaths\Admin\Contact;
 use App\Enums\ViewPaths\Admin\Product;
 use App\Enums\ViewPaths\Admin\Profile;
+use App\Enums\ViewPaths\Admin\Section;
 use App\Enums\ViewPaths\Admin\SiteMap;
 use App\Enums\ViewPaths\Admin\Category;
 use App\Enums\ViewPaths\Admin\Chatting;
@@ -170,6 +171,7 @@ use App\Http\Controllers\Admin\Deliveryman\DeliveryManCashCollectController;
 use App\Http\Controllers\Admin\Settings\StorageConnectionSettingsController;
 use App\Http\Controllers\Admin\Settings\VendorRegistrationSettingController;
 use App\Http\Controllers\Admin\Notification\PushNotificationSettingsController;
+use App\Http\Controllers\Admin\SectionController;
 
 
 Route::controller(SharedController::class)->group(function () {
@@ -372,6 +374,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Banner::UPDATE[URI] . '/{id}', 'update');
         });
     });
+
+        // Section
+        Route::group(['prefix' => 'section', 'as' => 'section.'], function () {
+            Route::controller(SectionController::class)->group(function () {
+                Route::get(Section::LIST[URI], 'index')->name('list');
+                Route::post(Section::ADD[URI], 'add')->name('store');
+                Route::post(Section::DELETE[URI], 'delete')->name('delete');
+                Route::post(Section::STATUS[URI], 'updateStatus')->name('status');
+                Route::get(Section::UPDATE[URI] . '/{id}', 'getUpdateView')->name('update');
+                Route::post(Section::UPDATE[URI] . '/{id}', 'update'); 
+
+            });
+        });
 
     // Customer Routes, Customer wallet Routes, Customer Loyalty Routes
     Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => ['module:user_section']], function () {

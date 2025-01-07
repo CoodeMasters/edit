@@ -62,7 +62,8 @@ class CustomerController extends BaseController
      * Index function is the starting point of a controller
      */
     public function index(Request|null $request, string $type = null): View
-    {
+    {  
+
         return $this->getListView($request);
     }
 
@@ -106,6 +107,7 @@ class CustomerController extends BaseController
             dataLimit: getWebConfig(name: WebConfigKey::PAGINATION_LIMIT),
             appends: $request->all(),
         );
+        //dd($customers[4]);
         $totalCustomers = $this->customerRepo->getListWhere(dataLimit: 'all')->count();
         return view(Customer::LIST[VIEW], [
             'customers' => $customers,

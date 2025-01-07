@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\StatesSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
          $this->call([
              AdminRoleTable::class,
              AdminTable::class,
+             StatesSeeder::class,
              SellerTableSeeder::class
          ]);
     }

@@ -51,13 +51,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $themeName = theme_root_path();
+/*         $themeName = theme_root_path();
         return match ($themeName) {
             'default' => self::default_theme(),
             'theme_aster' => self::theme_aster(),
             'theme_fashion' => self::theme_fashion(),
             'theme_all_purpose' => self::theme_all_purpose(),
-        };
+        }; */
+        return redirect('/login/admin');
     }
 
     public function default_theme(): View
